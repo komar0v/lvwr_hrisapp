@@ -26,13 +26,16 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('panelSystemLogViewerPage') ? '' : 'collapsed' }}" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+                <a class="nav-link {{ request()->is('panels/system/*') ? '' : 'collapsed' }}" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-gem"></i><span>System</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
-                <ul id="icons-nav" class="nav-content {{ request()->routeIs('panelSystemLogViewerPage') ? '' : 'collapse' }} " data-bs-parent="#sidebar-nav">
+                <ul id="icons-nav" class="nav-content {{ request()->is('panels/system/*') ? '' : 'collapse' }} " data-bs-parent="#sidebar-nav">
                     <li>
                         <a wire:navigate href="{{ route('panelSystemLogViewerPage') }}" class="{{ request()->routeIs('panelSystemLogViewerPage') ? 'active' : '' }}">
                             <i class="bi bi-circle"></i><span>Logs</span>
+                        </a>
+                        <a wire:navigate href="{{ route('panelSchedulerLogViewerPage') }}" class="{{ request()->routeIs('panelSchedulerLogViewerPage') ? 'active' : '' }}">
+                            <i class="bi bi-circle"></i><span>Scheduler Logs</span>
                         </a>
                     </li>
                 </ul>

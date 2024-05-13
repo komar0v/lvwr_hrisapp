@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Panels\Home;
+namespace App\Livewire\Panels\System;
 
 use GuzzleHttp\Client;
 use Livewire\Component;
@@ -8,11 +8,11 @@ use Livewire\Attributes\Title;
 use Livewire\Attributes\Layout;
 use GuzzleHttp\Exception\RequestException;
 
-class Index extends Component
+class Schedulerlog extends Component
 {
     #[Layout('components.layouts.panels')]
-    #[Title('Dashboard')]
-    public $applicantCounters, $applicantResultCounters;
+    #[Title('Scheduler Log')]
+    public $scheLog;
 
     public function mount(){
         $apiURL = env('API_URL');
@@ -21,23 +21,14 @@ class Index extends Component
         ]);
 
         try {
-            $res = $client->get('/api/counters/applicant/count_applicant', [
+            $res = $client->get('/api/sys/log/get_scheduler_log', [
                 'headers' => [
                     'Accept' => 'application/json',
                     'Authorization' => 'Bearer ' . session('admin_auth_data.token')
                 ],
             ]);
 
-            $res2 = $client->get('/api/counters/applicant/count_applicant_results', [
-                'headers' => [
-                    'Accept' => 'application/json',
-                    'Authorization' => 'Bearer ' . session('admin_auth_data.token')
-                ],
-            ]);
-            
-            $this->applicantResultCounters = json_decode($res2->getBody()->getContents(), true);
-
-            $this->applicantCounters = json_decode($res->getBody()->getContents(), true);
+            $this->scheLog = json_decode($res->getBody()->getContents(), true);
         } catch (RequestException $e) {
 
             if ($e->hasResponse()) {
@@ -59,6 +50,7 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.panels.home.index');
+        $this->mount();
+        return view('livewire.panels.system.schedulerlog');
     }
 }

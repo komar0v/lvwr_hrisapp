@@ -40,9 +40,11 @@
                 <div class="col-lg-12">
 
                     <div class="card">
-                        <div wire:poll class="card-body">
+                        <div wire:poll.4s class="card-body">
                             <h5 class="card-title">System Log Viewer</h5>
-                            <p><samp>{!!$sysLog!!}</samp></p>
+                            <div class="p-2" style="background-color: #D3D3D3; height: 450px; overflow-y: auto;">
+                                <p><samp>{!! $sysLog !!}</samp></p>
+                            </div>
                         </div>
                     </div>
 

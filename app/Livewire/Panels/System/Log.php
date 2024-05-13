@@ -50,6 +50,7 @@ class Log extends Component
 
     public function render()
     {
+        $this->mount();
         return view('livewire.panels.system.log');
     }
 

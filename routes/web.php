@@ -15,6 +15,7 @@ use App\Livewire\Panels\Vacancy\Jobs as VacancyJobsIndex;
 use App\Livewire\Panels\Vacancy\Jobdetails as VacancyJobDetailsIndex;
 use App\Livewire\Panels\Vacancy\Jobcreate as VacancyJobCreate;
 use App\Livewire\Panels\System\Log as ViewLog;
+use App\Livewire\Panels\System\Schedulerlog as ViewSchedulerLog;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,4 @@ Route::get('/panels/jobs', VacancyJobsIndex::class)->name('panelVacancyJobsIndex
 Route::get('/panels/job/{jobId}', VacancyJobDetailsIndex::class)->name('panelVacancyJobDetailsPage');
 Route::get('/panels/jobs/create', VacancyJobCreate::class)->name('panelVacancyJobCreatePage');
 Route::get('/panels/system/logs', ViewLog::class)->name('panelSystemLogViewerPage');
+Route::get('/panels/system/scheduler-logs', ViewSchedulerLog::class)->name('panelSchedulerLogViewerPage');
